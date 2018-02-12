@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller alwaysBounce="YES" id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="overlap" id="JnJ-Kl-9zB">
+                            <items>
+                                <table alignment="left" id="sG9-wA-QNG">
+                                    <items>
+                                        <tableRow identifier="Row" selectable="NO" id="CRu-vs-i8B" customClass="PriceRowController">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="1" id="JO7-2U-pHA">
+                                                <items>
+                                                    <label alignment="left" text="ETH ~ USD" id="tsz-cf-EQW">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                    </label>
+                                                    <label alignment="left" text="--" id="akF-c6-qk0">
+                                                        <color key="textColor" red="0.98039215686274506" green="0.066666666666666666" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="22"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" red="0.96862745098039216" green="0.10588235294117647" blue="0.32549019607843138" alpha="0.17000000000000001" colorSpace="calibratedRGB"/>
+                                            </group>
+                                            <connections>
+                                                <outlet property="bodyLabel" destination="akF-c6-qk0" id="X4s-5H-O4S"/>
+                                                <outlet property="titleLabel" destination="tsz-cf-EQW" id="MWB-zC-9Bl"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                                <label alignment="center" verticalAlignment="center" text="Please add some currency in iPhone" textAlignment="center" numberOfLines="0" id="S6E-eQ-RS6"/>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="S3T-En-CM4">
+                        <items>
+                            <menuItem title="Settings" icon="more" id="ZDw-E0-xIe">
+                                <connections>
+                                    <action selector="showSettings" destination="AgC-eL-Hgc" id="SI6-Hu-88v"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="placeholderLabel" destination="S6E-eQ-RS6" id="IFF-op-3jC"/>
+                        <outlet property="table" destination="sG9-wA-QNG" id="7wE-dI-F4F"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="aKc-pl-Mth">
+            <objects>
+                <controller identifier="Settings" alwaysBounce="YES" id="2Gp-19-jyH" customClass="SettingsInterfaceController">
+                    <items>
+                        <button width="1" alignment="left" title="Force Sync" id="9Fr-Px-EJC">
+                            <connections>
+                                <action selector="forceSync" destination="2Gp-19-jyH" id="rbI-KK-urJ"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="forceSyncButton" destination="9Fr-Px-EJC" id="3Ey-AT-n7g"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="495" y="345"/>
+        </scene>
+    </scenes>
+</document>
