@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		047CE2D795258C2B2FFE3583 /* libPods-Coinstatus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 570FADEA1CD73793F4AEEA18 /* libPods-Coinstatus.a */; };
 		0A1B85E629CD2F9C2E5FBAED /* libPods-CoinstatusCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 131E4B2ECEF56A2AF51BFE42 /* libPods-CoinstatusCore.a */; };
+		3506CE89BF9FB2C0C73BE8B1 /* libPods-CoinstatusCore-watchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA4C00BF20994C6AFC223A2 /* libPods-CoinstatusCore-watchOS.a */; };
 		FA28C0B12030183D00E1C3F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C0B02030183D00E1C3F7 /* AppDelegate.m */; };
 		FA28C0B72030183D00E1C3F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA28C0B52030183D00E1C3F7 /* Main.storyboard */; };
 		FA28C0B92030183D00E1C3F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA28C0B82030183D00E1C3F7 /* Assets.xcassets */; };
@@ -29,7 +30,6 @@
 		FA28C10820304C8E00E1C3F7 /* CNSExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C10720304C8E00E1C3F7 /* CNSExchange.m */; };
 		FA28C10B203050E400E1C3F7 /* CNSExchangeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C10A203050E400E1C3F7 /* CNSExchangeCollectionViewCell.m */; };
 		FA28C10E20306E3600E1C3F7 /* CNSCardOptionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C10D20306E3600E1C3F7 /* CNSCardOptionButton.m */; };
-		FA28C1182030775400E1C3F7 /* CoinstatusCore.h in Headers */ = {isa = PBXBuildFile; fileRef = FA28C1162030775400E1C3F7 /* CoinstatusCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA28C11B2030775400E1C3F7 /* CoinstatusCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA28C1142030775400E1C3F7 /* CoinstatusCore.framework */; };
 		FA28C11C2030775400E1C3F7 /* CoinstatusCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA28C1142030775400E1C3F7 /* CoinstatusCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA28C121203077D800E1C3F7 /* CNSDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C0C72030187000E1C3F7 /* CNSDataCenter.m */; };
@@ -43,12 +43,18 @@
 		FA28C13D20308C4800E1C3F7 /* SettingsInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C13C20308C4800E1C3F7 /* SettingsInterfaceController.m */; };
 		FA28C14020314C4800E1C3F7 /* CNSPriceRetriever.h in Headers */ = {isa = PBXBuildFile; fileRef = FA28C13E20314C4800E1C3F7 /* CNSPriceRetriever.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA28C14120314C4800E1C3F7 /* CNSPriceRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C13F20314C4800E1C3F7 /* CNSPriceRetriever.m */; };
-		FA28C1512031680500E1C3F7 /* CNSCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C104203032C400E1C3F7 /* CNSCoin.m */; };
-		FA28C1522031680500E1C3F7 /* CNSExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C10720304C8E00E1C3F7 /* CNSExchange.m */; };
-		FA28C1532031680500E1C3F7 /* CNSDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C0C72030187000E1C3F7 /* CNSDataCenter.m */; };
-		FA28C1542031680500E1C3F7 /* CNSPriceRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C13F20314C4800E1C3F7 /* CNSPriceRetriever.m */; };
-		FA28C155203170CF00E1C3F7 /* CNSExchangeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C12820307C3000E1C3F7 /* CNSExchangeManager.m */; };
-		FBA49A0A196323F8E8E6C0E9 /* libPods-CoinstatusWatch Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B4B31784E0AA8773402323 /* libPods-CoinstatusWatch Extension.a */; };
+		FA7B1A4A2032D70F00379E35 /* CoinstatusCore_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7B1A432032D70F00379E35 /* CoinstatusCore_watchOS.framework */; };
+		FA7B1A4B2032D70F00379E35 /* CoinstatusCore_watchOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA7B1A432032D70F00379E35 /* CoinstatusCore_watchOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FA7B1A502032D74C00379E35 /* CNSCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C104203032C400E1C3F7 /* CNSCoin.m */; };
+		FA7B1A512032D74C00379E35 /* CNSExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C10720304C8E00E1C3F7 /* CNSExchange.m */; };
+		FA7B1A522032D74C00379E35 /* CNSDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C0C72030187000E1C3F7 /* CNSDataCenter.m */; };
+		FA7B1A532032D74C00379E35 /* CNSExchangeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C12820307C3000E1C3F7 /* CNSExchangeManager.m */; };
+		FA7B1A542032D74C00379E35 /* CNSPriceRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = FA28C13F20314C4800E1C3F7 /* CNSPriceRetriever.m */; };
+		FA7B1A552032D85600379E35 /* CNSDataCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = FA28C0C62030187000E1C3F7 /* CNSDataCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA7B1A562032D85800379E35 /* CNSExchangeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FA28C12720307C3000E1C3F7 /* CNSExchangeManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA7B1A572032D85A00379E35 /* CNSPriceRetriever.h in Headers */ = {isa = PBXBuildFile; fileRef = FA28C13E20314C4800E1C3F7 /* CNSPriceRetriever.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA7B1A582032D85E00379E35 /* CNSCoin.h in Headers */ = {isa = PBXBuildFile; fileRef = FA28C103203032C400E1C3F7 /* CNSCoin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA7B1A592032D86100379E35 /* CNSExchange.h in Headers */ = {isa = PBXBuildFile; fileRef = FA28C10620304C8E00E1C3F7 /* CNSExchange.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +78,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = FA28C1132030775400E1C3F7;
 			remoteInfo = CoinstatusCore;
+		};
+		FA7B1A482032D70F00379E35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA28C0A42030183D00E1C3F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA7B1A422032D70F00379E35;
+			remoteInfo = "CoinstatusCore-watchOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -109,18 +122,30 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA7B1A4F2032D70F00379E35 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FA7B1A4B2032D70F00379E35 /* CoinstatusCore_watchOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		05B4B31784E0AA8773402323 /* libPods-CoinstatusWatch Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoinstatusWatch Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1270A23409F142EC52735E4A /* Pods-CoinstatusWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinstatusWatch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinstatusWatch Extension/Pods-CoinstatusWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		131E4B2ECEF56A2AF51BFE42 /* libPods-CoinstatusCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoinstatusCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2576BE40FD33B906C47C578E /* Pods-CoinstatusCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinstatusCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinstatusCore/Pods-CoinstatusCore.release.xcconfig"; sourceTree = "<group>"; };
 		291851F292F4D825828257DC /* Pods-Coinstatus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coinstatus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coinstatus/Pods-Coinstatus.debug.xcconfig"; sourceTree = "<group>"; };
 		3599C9030C02ED2A9047224D /* Pods-Coinstatus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coinstatus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coinstatus/Pods-Coinstatus.release.xcconfig"; sourceTree = "<group>"; };
-		3E7178B15A352A91107EF493 /* Pods-CoinstatusWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinstatusWatch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinstatusWatch Extension/Pods-CoinstatusWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		570FADEA1CD73793F4AEEA18 /* libPods-Coinstatus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Coinstatus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C1B72CD5C333E5D0A3A8E04 /* Pods-CoinstatusCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinstatusCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinstatusCore/Pods-CoinstatusCore.debug.xcconfig"; sourceTree = "<group>"; };
+		5C354473E5E889F45214ACB2 /* Pods-CoinstatusCore-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinstatusCore-watchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinstatusCore-watchOS/Pods-CoinstatusCore-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BF23F1124E0C85A6655AAF9E /* Pods-CoinstatusCore-watchOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinstatusCore-watchOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinstatusCore-watchOS/Pods-CoinstatusCore-watchOS.release.xcconfig"; sourceTree = "<group>"; };
+		CBA4C00BF20994C6AFC223A2 /* libPods-CoinstatusCore-watchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoinstatusCore-watchOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA28C0AC2030183D00E1C3F7 /* Coinstatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinstatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA28C0AF2030183D00E1C3F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FA28C0B02030183D00E1C3F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -160,7 +185,6 @@
 		FA28C10C20306E3600E1C3F7 /* CNSCardOptionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNSCardOptionButton.h; sourceTree = "<group>"; };
 		FA28C10D20306E3600E1C3F7 /* CNSCardOptionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNSCardOptionButton.m; sourceTree = "<group>"; };
 		FA28C1142030775400E1C3F7 /* CoinstatusCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoinstatusCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA28C1162030775400E1C3F7 /* CoinstatusCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoinstatusCore.h; sourceTree = "<group>"; };
 		FA28C1172030775400E1C3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA28C12720307C3000E1C3F7 /* CNSExchangeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNSExchangeManager.h; sourceTree = "<group>"; };
 		FA28C12820307C3000E1C3F7 /* CNSExchangeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNSExchangeManager.m; sourceTree = "<group>"; };
@@ -168,6 +192,7 @@
 		FA28C13C20308C4800E1C3F7 /* SettingsInterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsInterfaceController.m; sourceTree = "<group>"; };
 		FA28C13E20314C4800E1C3F7 /* CNSPriceRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNSPriceRetriever.h; sourceTree = "<group>"; };
 		FA28C13F20314C4800E1C3F7 /* CNSPriceRetriever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CNSPriceRetriever.m; sourceTree = "<group>"; };
+		FA7B1A432032D70F00379E35 /* CoinstatusCore_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoinstatusCore_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBA49A0A196323F8E8E6C0E9 /* libPods-CoinstatusWatch Extension.a in Frameworks */,
+				FA7B1A4A2032D70F00379E35 /* CoinstatusCore_watchOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +225,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1B85E629CD2F9C2E5FBAED /* libPods-CoinstatusCore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA7B1A3F2032D70F00379E35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3506CE89BF9FB2C0C73BE8B1 /* libPods-CoinstatusCore-watchOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +246,8 @@
 				2576BE40FD33B906C47C578E /* Pods-CoinstatusCore.release.xcconfig */,
 				291851F292F4D825828257DC /* Pods-Coinstatus.debug.xcconfig */,
 				3599C9030C02ED2A9047224D /* Pods-Coinstatus.release.xcconfig */,
-				1270A23409F142EC52735E4A /* Pods-CoinstatusWatch Extension.debug.xcconfig */,
-				3E7178B15A352A91107EF493 /* Pods-CoinstatusWatch Extension.release.xcconfig */,
+				5C354473E5E889F45214ACB2 /* Pods-CoinstatusCore-watchOS.debug.xcconfig */,
+				BF23F1124E0C85A6655AAF9E /* Pods-CoinstatusCore-watchOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -225,6 +258,7 @@
 				570FADEA1CD73793F4AEEA18 /* libPods-Coinstatus.a */,
 				131E4B2ECEF56A2AF51BFE42 /* libPods-CoinstatusCore.a */,
 				05B4B31784E0AA8773402323 /* libPods-CoinstatusWatch Extension.a */,
+				CBA4C00BF20994C6AFC223A2 /* libPods-CoinstatusCore-watchOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,6 +283,7 @@
 				FA28C0CB203023CF00E1C3F7 /* CoinstatusWatch.app */,
 				FA28C0D7203023CF00E1C3F7 /* CoinstatusWatch Extension.appex */,
 				FA28C1142030775400E1C3F7 /* CoinstatusCore.framework */,
+				FA7B1A432032D70F00379E35 /* CoinstatusCore_watchOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -342,7 +377,6 @@
 				FA28C12820307C3000E1C3F7 /* CNSExchangeManager.m */,
 				FA28C13E20314C4800E1C3F7 /* CNSPriceRetriever.h */,
 				FA28C13F20314C4800E1C3F7 /* CNSPriceRetriever.m */,
-				FA28C1162030775400E1C3F7 /* CoinstatusCore.h */,
 				FA28C1172030775400E1C3F7 /* Info.plist */,
 			);
 			path = CoinstatusCore;
@@ -355,12 +389,23 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA28C1182030775400E1C3F7 /* CoinstatusCore.h in Headers */,
 				FA28C1222030781C00E1C3F7 /* CNSCoin.h in Headers */,
 				FA28C1232030781C00E1C3F7 /* CNSExchange.h in Headers */,
 				FA28C12920307C3000E1C3F7 /* CNSExchangeManager.h in Headers */,
 				FA28C14020314C4800E1C3F7 /* CNSPriceRetriever.h in Headers */,
 				FA28C1242030781C00E1C3F7 /* CNSDataCenter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA7B1A402032D70F00379E35 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA7B1A552032D85600379E35 /* CNSDataCenter.h in Headers */,
+				FA7B1A562032D85800379E35 /* CNSExchangeManager.h in Headers */,
+				FA7B1A572032D85A00379E35 /* CNSPriceRetriever.h in Headers */,
+				FA7B1A582032D85E00379E35 /* CNSCoin.h in Headers */,
+				FA7B1A592032D86100379E35 /* CNSExchange.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,16 +458,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA28C0F3203023CF00E1C3F7 /* Build configuration list for PBXNativeTarget "CoinstatusWatch Extension" */;
 			buildPhases = (
-				8044EA0A39A3DFDFF10F3A3D /* [CP] Check Pods Manifest.lock */,
 				FA28C0D3203023CF00E1C3F7 /* Sources */,
 				FA28C0D4203023CF00E1C3F7 /* Frameworks */,
 				FA28C0D5203023CF00E1C3F7 /* Resources */,
-				F3ABA07DDC2C11244FD44AF0 /* [CP] Embed Pods Frameworks */,
-				2884863A8C7BE92699FECEF8 /* [CP] Copy Pods Resources */,
+				FA7B1A4F2032D70F00379E35 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FA7B1A492032D70F00379E35 /* PBXTargetDependency */,
 			);
 			name = "CoinstatusWatch Extension";
 			productName = "CoinstatusWatch Extension";
@@ -447,6 +491,26 @@
 			name = CoinstatusCore;
 			productName = CoinstatusCore;
 			productReference = FA28C1142030775400E1C3F7 /* CoinstatusCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA7B1A422032D70F00379E35 /* CoinstatusCore-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA7B1A4E2032D70F00379E35 /* Build configuration list for PBXNativeTarget "CoinstatusCore-watchOS" */;
+			buildPhases = (
+				4BF9371C2EF6DA210E927663 /* [CP] Check Pods Manifest.lock */,
+				FA7B1A3E2032D70F00379E35 /* Sources */,
+				FA7B1A3F2032D70F00379E35 /* Frameworks */,
+				FA7B1A402032D70F00379E35 /* Headers */,
+				FA7B1A412032D70F00379E35 /* Resources */,
+				4814E3274267E546F65531FF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CoinstatusCore-watchOS";
+			productName = "CoinstatusCore-watchOS";
+			productReference = FA7B1A432032D70F00379E35 /* CoinstatusCore_watchOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -484,6 +548,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					FA7B1A422032D70F00379E35 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = FA28C0A72030183D00E1C3F7 /* Build configuration list for PBXProject "Coinstatus" */;
@@ -503,6 +571,7 @@
 				FA28C0CA203023CF00E1C3F7 /* CoinstatusWatch */,
 				FA28C0D6203023CF00E1C3F7 /* CoinstatusWatch Extension */,
 				FA28C1132030775400E1C3F7 /* CoinstatusCore */,
+				FA7B1A422032D70F00379E35 /* CoinstatusCore-watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -542,10 +611,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA7B1A412032D70F00379E35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2884863A8C7BE92699FECEF8 /* [CP] Copy Pods Resources */ = {
+		4814E3274267E546F65531FF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -557,7 +633,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinstatusWatch Extension/Pods-CoinstatusWatch Extension-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinstatusCore-watchOS/Pods-CoinstatusCore-watchOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BF9371C2EF6DA210E927663 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinstatusCore-watchOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		70BBF42F39DF205782C5FE20 /* [CP] Copy Pods Resources */ = {
@@ -573,24 +667,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinstatusCore/Pods-CoinstatusCore-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8044EA0A39A3DFDFF10F3A3D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CoinstatusWatch Extension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9ADA5F8348C5AD7CBC9BD2DC /* [CP] Check Pods Manifest.lock */ = {
@@ -659,21 +735,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F3ABA07DDC2C11244FD44AF0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinstatusWatch Extension/Pods-CoinstatusWatch Extension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -697,11 +758,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA28C155203170CF00E1C3F7 /* CNSExchangeManager.m in Sources */,
-				FA28C1512031680500E1C3F7 /* CNSCoin.m in Sources */,
-				FA28C1522031680500E1C3F7 /* CNSExchange.m in Sources */,
-				FA28C1532031680500E1C3F7 /* CNSDataCenter.m in Sources */,
-				FA28C1542031680500E1C3F7 /* CNSPriceRetriever.m in Sources */,
 				FA28C0E1203023CF00E1C3F7 /* ExtensionDelegate.m in Sources */,
 				FA28C0E7203023CF00E1C3F7 /* ComplicationController.m in Sources */,
 				FA28C13D20308C4800E1C3F7 /* SettingsInterfaceController.m in Sources */,
@@ -718,6 +774,18 @@
 				FA28C14120314C4800E1C3F7 /* CNSPriceRetriever.m in Sources */,
 				FA28C1262030785000E1C3F7 /* CNSExchange.m in Sources */,
 				FA28C121203077D800E1C3F7 /* CNSDataCenter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA7B1A3E2032D70F00379E35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA7B1A502032D74C00379E35 /* CNSCoin.m in Sources */,
+				FA7B1A512032D74C00379E35 /* CNSExchange.m in Sources */,
+				FA7B1A522032D74C00379E35 /* CNSDataCenter.m in Sources */,
+				FA7B1A532032D74C00379E35 /* CNSExchangeManager.m in Sources */,
+				FA7B1A542032D74C00379E35 /* CNSPriceRetriever.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,6 +806,11 @@
 			isa = PBXTargetDependency;
 			target = FA28C1132030775400E1C3F7 /* CoinstatusCore */;
 			targetProxy = FA28C1192030775400E1C3F7 /* PBXContainerItemProxy */;
+		};
+		FA7B1A492032D70F00379E35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA7B1A422032D70F00379E35 /* CoinstatusCore-watchOS */;
+			targetProxy = FA7B1A482032D70F00379E35 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -939,7 +1012,6 @@
 		};
 		FA28C0F1203023CF00E1C3F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1270A23409F142EC52735E4A /* Pods-CoinstatusWatch Extension.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
@@ -949,7 +1021,6 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/Public/PINCache\"",
-					"\"$(SRCROOT)\"/**",
 				);
 				INFOPLIST_FILE = "CoinstatusWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -958,14 +1029,13 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
 			name = Debug;
 		};
 		FA28C0F2203023CF00E1C3F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E7178B15A352A91107EF493 /* Pods-CoinstatusWatch Extension.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
@@ -975,7 +1045,6 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/Public/PINCache\"",
-					"\"$(SRCROOT)\"/**",
 				);
 				INFOPLIST_FILE = "CoinstatusWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -984,7 +1053,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
 			name = Release;
@@ -1007,7 +1076,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1033,11 +1102,63 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FA7B1A4C2032D70F00379E35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C354473E5E889F45214ACB2 /* Pods-CoinstatusCore-watchOS.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CoinstatusCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cyandev.CoinstatusCore-watchOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		FA7B1A4D2032D70F00379E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF23F1124E0C85A6655AAF9E /* Pods-CoinstatusCore-watchOS.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CoinstatusCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cyandev.CoinstatusCore-watchOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
 			name = Release;
 		};
@@ -1085,6 +1206,15 @@
 			buildConfigurations = (
 				FA28C11E2030775400E1C3F7 /* Debug */,
 				FA28C11F2030775400E1C3F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA7B1A4E2032D70F00379E35 /* Build configuration list for PBXNativeTarget "CoinstatusCore-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA7B1A4C2032D70F00379E35 /* Debug */,
+				FA7B1A4D2032D70F00379E35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
