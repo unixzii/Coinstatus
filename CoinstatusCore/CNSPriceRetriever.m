@@ -8,6 +8,10 @@
 
 #import "CNSPriceRetriever.h"
 
+#if TARGET_OS_IOS
+#import <UIKit/UIKit.h>
+#endif
+
 #import <PINCache/PINCache.h>
 
 #import "CNSDataCenter.h"
@@ -18,6 +22,7 @@ static NSString * const kCacheName = @"Coinstatus_Price";
 static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
 
 @implementation CNSPriceRetriever {
+    BOOL _started;
     NSTimer *_timer;
     NSDate *_lastUpdateTime;
     PINMemoryCache *_memCache;
@@ -31,16 +36,34 @@ static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
     _memCache = [[PINMemoryCache alloc] init];
     _diskCache = [[PINDiskCache alloc] initWithName:kCacheName];
     
+#if TARGET_OS_IOS
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(_responseToApplicationStateChange:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [center addObserver:self selector:@selector(_responseToApplicationStateChange:) name:UIApplicationWillResignActiveNotification object:nil];
+#endif
+    
     return self;
+}
+
+- (void)dealloc {
+#if TARGET_OS_IOS
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+#endif
 }
 
 - (void)setExchangeList:(NSArray<NSString *> *)exchangeList {
     _exchangeList = exchangeList;
-    [self _downloadLatestData];
+    
+    if (_started) {
+        [self _downloadLatestData];
+    }
 }
 
 - (void)startRetrieving {
-    if (_timer) return;
+    if (_started) return;
+    _started = YES;
+    
+    if (_timer) [_timer invalidate];
     
     _timer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(_downloadLatestData) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
@@ -49,6 +72,8 @@ static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
 }
 
 - (void)stopRetrieving {
+    _started = NO;
+    
     if (_timer) {
         [_timer invalidate];
         _timer = nil;
@@ -64,6 +89,19 @@ static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
     
     return info;
 }
+
+#if TARGET_OS_IOS
+- (void)_responseToApplicationStateChange:(NSNotification *)note {
+    if (!_started) return;
+    
+    if ([UIApplicationDidBecomeActiveNotification isEqualToString:note.name]) {
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        [self _downloadLatestData];
+    } else {
+        [_timer invalidate];
+    }
+}
+#endif
 
 - (void)_downloadLatestData {
     if (!_lastUpdateTime) {
