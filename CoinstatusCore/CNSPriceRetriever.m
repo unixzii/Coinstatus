@@ -55,7 +55,7 @@ static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
     }
 }
 
-- (NSDictionary<NSString *, id> *)getInfoFromSymbol:(NSString *)fsym {
+- (NSDictionary<NSString *, id> *)infoFromSymbol:(NSString *)fsym {
     id info = [_memCache objectForKey:fsym];
     if (!info) {
         info = [_diskCache objectForKey:fsym];
@@ -78,7 +78,7 @@ static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
     __block BOOL shouldDownload = [[NSDate date] timeIntervalSinceDate:_lastUpdateTime] > MIN_UPDATE_TIME_INTERVAL;
     if (!shouldDownload) {
         [_exchangeList enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (![self getInfoFromSymbol:[obj componentsSeparatedByString:@"~"].firstObject]) {
+            if (![self infoFromSymbol:[obj componentsSeparatedByString:@"~"].firstObject]) {
                 shouldDownload = YES;
                 *stop = NO;
             }

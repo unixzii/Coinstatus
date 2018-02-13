@@ -110,7 +110,7 @@
 
 - (void)newDataAvailableOfPriceRetriever:(CNSPriceRetriever *)retriever {
     [_exchangeList enumerateObjectsUsingBlock:^(CNSExchange * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        id info = [retriever getInfoFromSymbol:obj.fromSymbol];
+        id info = [retriever infoFromSymbol:obj.fromSymbol];
         obj.value = [NSDecimalNumber decimalNumberWithString:[[info objectForKey:@"PRICE"] stringValue]];
     }];
     

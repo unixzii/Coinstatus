@@ -25,6 +25,6 @@
 - (void)startRetrieving;
 - (void)stopRetrieving;
 
-- (NSDictionary<NSString *, id> *)getInfoFromSymbol:(NSString *)fsym;
+- (NSDictionary<NSString *, id> *)infoFromSymbol:(NSString *)fsym;
 
 @end

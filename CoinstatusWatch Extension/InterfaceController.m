@@ -66,7 +66,7 @@
         NSString *fsym = [obj componentsSeparatedByString:@"~"].firstObject;
         PriceRowController *row = [self.table rowControllerAtIndex:idx];
         
-        id info = [priceRetriever getInfoFromSymbol:fsym];
+        id info = [priceRetriever infoFromSymbol:fsym];
         NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithString:[[info objectForKey:@"PRICE"] stringValue]];
         
         [row.bodyLabel setText:[NSString stringWithFormat:@"%.2f", price.doubleValue]];

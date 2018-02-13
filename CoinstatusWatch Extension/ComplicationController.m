@@ -28,7 +28,7 @@
         CNSPriceRetriever *priceRetriever = ((ExtensionDelegate *) [WKExtension sharedExtension].delegate).priceRetriever;
         
         fsym = [exchange componentsSeparatedByString:@"~"].firstObject;
-        price = [NSString stringWithFormat:@"%.2f", [[[priceRetriever getInfoFromSymbol:fsym] objectForKey:@"PRICE"] doubleValue]];
+        price = [NSString stringWithFormat:@"%.2f", [[[priceRetriever infoFromSymbol:fsym] objectForKey:@"PRICE"] doubleValue]];
     }
     
     if (complication.family == CLKComplicationFamilyModularLarge) {
