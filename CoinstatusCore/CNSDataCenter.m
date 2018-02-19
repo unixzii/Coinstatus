@@ -83,6 +83,7 @@ NSError *MakeError(NSInteger code, NSDictionary<NSErrorUserInfoKey,id> *userInfo
 }
 
 - (void)clearCoinListCache {
+    [_memCache removeObjectForKey:@"coinList"];
     [_diskCache removeObjectForKey:@"coinList"];
 }
 
