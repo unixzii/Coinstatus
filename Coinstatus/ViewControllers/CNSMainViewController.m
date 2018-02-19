@@ -8,6 +8,7 @@
 
 #import "CNSMainViewController.h"
 
+#import "AppDelegate.h"
 #import "CNSExchangeCollectionViewCell.h"
 #import "CNSExchange.h"
 #import "CNSExchangeManager.h"
@@ -15,6 +16,8 @@
 
 @interface CNSMainViewController () <UICollectionViewDelegate, UICollectionViewDataSource, CNSPriceRetrieverDelegate> {
     CNSPriceRetriever *_priceRetriever;
+    BOOL _interactiveMovementInFlight;
+    BOOL _dataUpdatingDeferred;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -30,7 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ((UICollectionViewFlowLayout *) _collectionView.collectionViewLayout).estimatedItemSize = CGSizeMake(0, 60);
+    [self restoreCollectionViewLayoutConfigurations];
+    [_collectionView addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(dragCollectionViewItem:)]];
     
     // Manually set the line number due to an IB bug that contents are shown incorrectly.
     _placeholderLabel.numberOfLines = 0;
@@ -39,11 +43,6 @@
     _priceRetriever.delegate = self;
     
     [self loadExchangeList];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)loadExchangeList {
@@ -61,6 +60,66 @@
     [_priceRetriever startRetrieving];
     
     [_collectionView reloadData];
+}
+
+- (void)saveExchangeList {
+    NSMutableArray<NSString *> *exchangeList = [NSMutableArray array];
+    [_exchangeList enumerateObjectsUsingBlock:^(CNSExchange * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [exchangeList addObject:[NSString stringWithFormat:@"%@~%@", obj.fromSymbol, obj.toSymbol]];
+    }];
+    
+    [CNSExchangeManager defaultManager].exchangeList = exchangeList;
+    [((AppDelegate *) [UIApplication sharedApplication].delegate) syncExchangeListWithWatch];
+}
+
+- (void)dragCollectionViewItem:(UILongPressGestureRecognizer *)sender {
+    CGPoint location = [sender locationInView:_collectionView];
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *downIndexPath = [_collectionView indexPathForItemAtPoint:location];
+        if (downIndexPath) {
+            // Interactively moving cells will be resize to the layout's estimatedItemSize.
+            // To make cells display reasonable, we need to that to current cells' actual
+            // size.
+            UICollectionViewFlowLayout *layout = (id) _collectionView.collectionViewLayout;
+            UIView *cell = [_collectionView cellForItemAtIndexPath:downIndexPath];
+            layout.estimatedItemSize = cell.bounds.size;
+            
+            _interactiveMovementInFlight = YES;
+            [_collectionView beginInteractiveMovementForItemAtIndexPath:downIndexPath];
+            
+            [_priceRetriever stopRetrieving];
+        }
+        
+        return;
+    }
+    
+    if (!_interactiveMovementInFlight) return;
+    
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        [_collectionView updateInteractiveMovementTargetPosition:location];
+        return;
+    }
+    
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [_collectionView endInteractiveMovement];
+    } else if (sender.state == UIGestureRecognizerStateCancelled) {
+        [_collectionView cancelInteractiveMovement];
+    }
+    
+    [self restoreCollectionViewLayoutConfigurations];
+    if (_dataUpdatingDeferred) {
+        _dataUpdatingDeferred = NO;
+        [_collectionView reloadData];
+    }
+    
+    _interactiveMovementInFlight = NO;
+    
+    [_priceRetriever startRetrieving];
+}
+
+- (void)restoreCollectionViewLayoutConfigurations {
+    UICollectionViewFlowLayout *layout = (id) _collectionView.collectionViewLayout;
+    layout.estimatedItemSize = CGSizeMake(300, 60);
 }
 
 #pragma mark - Navigation
@@ -106,6 +165,18 @@
     return cell;
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;  // Yes, we can!
+}
+
+- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    id item = [_exchangeList objectAtIndex:sourceIndexPath.item];
+    [_exchangeList removeObjectAtIndex:sourceIndexPath.item];
+    [_exchangeList insertObject:item atIndex:destinationIndexPath.item];
+    
+    [self saveExchangeList];
+}
+
 #pragma mark - CNSPriceRetrieverDelegate
 
 - (void)newDataAvailableOfPriceRetriever:(CNSPriceRetriever *)retriever {
@@ -113,6 +184,11 @@
         id info = [retriever infoFromSymbol:obj.fromSymbol];
         obj.value = [NSDecimalNumber decimalNumberWithString:[[info objectForKey:@"PRICE"] stringValue]];
     }];
+    
+    if (_interactiveMovementInFlight) {
+        _dataUpdatingDeferred = YES;
+        return;
+    }
     
     [_collectionView reloadData];
 }

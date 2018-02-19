@@ -80,7 +80,7 @@
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message replyHandler:(void(^)(NSDictionary<NSString *, id> *replyMessage))replyHandler {
     NSString *action = [message objectForKey:@"action"];
     if ([@"forceSync" isEqualToString:action]) {
-        [self responseWatchForceSync];
+        [self syncExchangeListWithWatch];
     }
     
     replyHandler(@{});
@@ -88,16 +88,15 @@
 
 #pragma mark - Watch Relative
 
-- (void)responseWatchForceSync {
+- (void)syncExchangeListWithWatch {
     WCSession *session = [WCSession defaultSession];
+    if (!session.isReachable) return;
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [session
-         transferUserInfo:@{
-                            @"action": @"syncExchangeList",
-                            @"payload": [CNSExchangeManager defaultManager].exchangeList
-                            }];
-    });
+    [session
+     transferUserInfo:@{
+                        @"action": @"syncExchangeList",
+                        @"payload": [CNSExchangeManager defaultManager].exchangeList
+                        }];
 }
 
 @end
