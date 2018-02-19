@@ -23,6 +23,7 @@ static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
 
 @implementation CNSPriceRetriever {
     BOOL _started;
+    BOOL _updateInFlight;
     NSTimer *_timer;
     NSDate *_lastUpdateTime;
     PINMemoryCache *_memCache;
@@ -95,15 +96,18 @@ static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
     if (!_started) return;
     
     if ([UIApplicationDidBecomeActiveNotification isEqualToString:note.name]) {
-        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-        [self _downloadLatestData];
+        _started = NO;
+        [self startRetrieving];
     } else {
         [_timer invalidate];
+        _timer = nil;
     }
 }
 #endif
 
 - (void)_downloadLatestData {
+    if (_updateInFlight) return;
+    
     if (!_lastUpdateTime) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         _lastUpdateTime = [defaults objectForKey:kLastUpdateTimeDefaultsKey];
@@ -124,7 +128,10 @@ static NSString * const kLastUpdateTimeDefaultsKey = @"LastUpdateTime";
     }
     
     if (shouldDownload) {
+        _updateInFlight = YES;
         [[CNSDataCenter defaultCenter] fetchPrices:_exchangeList withCallback:^(id data, NSError * err) {
+            _updateInFlight = NO;
+            
             if (!data) return;
             
             _lastUpdateTime = [NSDate date];

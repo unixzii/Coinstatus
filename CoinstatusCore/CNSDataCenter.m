@@ -58,7 +58,12 @@ NSError *MakeError(NSInteger code, NSDictionary<NSErrorUserInfoKey,id> *userInfo
     _bgQueue.qualityOfService = NSQualityOfServiceUserInitiated;
     _bgQueue.maxConcurrentOperationCount = 4;
     
-    _httpSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kServiceBaseURL]];
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    sessionConfig.timeoutIntervalForRequest = 10;
+    sessionConfig.timeoutIntervalForResource = 30;
+    _httpSessionManager = [[AFHTTPSessionManager alloc]
+                           initWithBaseURL:[NSURL URLWithString:kServiceBaseURL]
+                           sessionConfiguration:sessionConfig];
     
     return self;
 }
