@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *exchangeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 
++ (void)closeCardOptionsInCellsExcept:(CNSExchangeCollectionViewCell *)cell;
+
 - (void)revealCardOption:(id)sender;
 - (void)closeCardOption:(id)sender;
 

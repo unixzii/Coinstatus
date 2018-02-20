@@ -42,38 +42,35 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSx-Sk-fBu">
-                                                    <rect key="frame" x="11" y="0.0" width="343" height="60"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH &gt; USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0n-eD-fCb">
-                                                            <rect key="frame" x="25" y="20" width="89" height="20"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <color key="textColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8052.06" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fp5-Pi-jqp">
-                                                            <rect key="frame" x="247" y="17" width="71" height="25.333333333333329"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="21"/>
-                                                            <color key="textColor" red="0.89803921568627454" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
+                                                    <rect key="frame" x="8" y="0.0" width="349" height="60"/>
                                                     <color key="backgroundColor" red="0.2470588235" green="0.2666666667" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="fp5-Pi-jqp" secondAttribute="trailing" constant="25" id="33q-SA-mBb"/>
-                                                        <constraint firstItem="fp5-Pi-jqp" firstAttribute="centerY" secondItem="xSx-Sk-fBu" secondAttribute="centerY" id="6yt-R7-vea"/>
-                                                        <constraint firstItem="b0n-eD-fCb" firstAttribute="leading" secondItem="xSx-Sk-fBu" secondAttribute="leading" constant="25" id="8eS-zv-tEA"/>
-                                                        <constraint firstAttribute="bottom" secondItem="b0n-eD-fCb" secondAttribute="bottom" constant="20" id="PaD-lV-ziw"/>
-                                                        <constraint firstItem="b0n-eD-fCb" firstAttribute="top" secondItem="xSx-Sk-fBu" secondAttribute="top" constant="20" id="dPk-xe-dyQ"/>
-                                                        <constraint firstItem="fp5-Pi-jqp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="b0n-eD-fCb" secondAttribute="trailing" constant="18" id="qOB-qw-e1S"/>
-                                                    </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH &gt; USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0n-eD-fCb">
+                                                    <rect key="frame" x="28" y="20" width="89" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8052.06" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fp5-Pi-jqp">
+                                                    <rect key="frame" x="266" y="17" width="71" height="25.333333333333329"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="21"/>
+                                                    <color key="textColor" red="0.89803921568627454" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="xSx-Sk-fBu" firstAttribute="leading" secondItem="JE7-m8-4L9" secondAttribute="leading" constant="11" id="6Qp-6R-m9j"/>
-                                            <constraint firstAttribute="bottom" secondItem="xSx-Sk-fBu" secondAttribute="bottom" id="mrN-OT-Aw8"/>
-                                            <constraint firstItem="xSx-Sk-fBu" firstAttribute="top" secondItem="JE7-m8-4L9" secondAttribute="top" id="wZP-xj-l8K"/>
-                                            <constraint firstAttribute="trailing" secondItem="xSx-Sk-fBu" secondAttribute="trailing" constant="11" id="xbg-r4-hbq"/>
+                                            <constraint firstItem="xSx-Sk-fBu" firstAttribute="top" secondItem="JE7-m8-4L9" secondAttribute="top" id="2Zg-ZI-1ZE"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="fp5-Pi-jqp" secondAttribute="trailing" constant="20" id="Bln-Rh-cI1"/>
+                                            <constraint firstAttribute="bottom" secondItem="b0n-eD-fCb" secondAttribute="bottom" constant="20" id="K4H-8K-uh5"/>
+                                            <constraint firstItem="b0n-eD-fCb" firstAttribute="centerY" secondItem="JE7-m8-4L9" secondAttribute="centerY" id="W4b-hQ-Vez"/>
+                                            <constraint firstItem="fp5-Pi-jqp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="b0n-eD-fCb" secondAttribute="trailing" constant="20" id="WbJ-c1-ud6"/>
+                                            <constraint firstItem="b0n-eD-fCb" firstAttribute="top" secondItem="JE7-m8-4L9" secondAttribute="top" constant="20" id="WpS-k1-MG5"/>
+                                            <constraint firstItem="b0n-eD-fCb" firstAttribute="leading" secondItem="JE7-m8-4L9" secondAttribute="leadingMargin" constant="20" id="Xd4-bA-Fei"/>
+                                            <constraint firstAttribute="bottom" secondItem="xSx-Sk-fBu" secondAttribute="bottom" id="ddw-Te-0IB"/>
+                                            <constraint firstItem="xSx-Sk-fBu" firstAttribute="leading" secondItem="JE7-m8-4L9" secondAttribute="leading" constant="8" id="mJW-NR-acB"/>
+                                            <constraint firstItem="fp5-Pi-jqp" firstAttribute="centerY" secondItem="JE7-m8-4L9" secondAttribute="centerY" id="paP-1A-5aF"/>
+                                            <constraint firstAttribute="trailing" secondItem="xSx-Sk-fBu" secondAttribute="trailing" constant="8" id="tGe-Bz-9kW"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cardView" destination="xSx-Sk-fBu" id="psk-NE-OH4"/>

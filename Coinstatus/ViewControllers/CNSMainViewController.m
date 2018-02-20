@@ -45,6 +45,11 @@
     [self loadExchangeList];
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [self restoreCollectionViewLayoutConfigurations];
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
 - (void)loadExchangeList {
     _exchangeList = [@[] mutableCopy];
     
@@ -86,8 +91,6 @@
             
             _interactiveMovementInFlight = YES;
             [_collectionView beginInteractiveMovementForItemAtIndexPath:downIndexPath];
-            
-            [_priceRetriever stopRetrieving];
         }
         
         return;
@@ -106,20 +109,17 @@
         [_collectionView cancelInteractiveMovement];
     }
     
-    [self restoreCollectionViewLayoutConfigurations];
     if (_dataUpdatingDeferred) {
         _dataUpdatingDeferred = NO;
         [_collectionView reloadData];
     }
     
     _interactiveMovementInFlight = NO;
-    
-    [_priceRetriever startRetrieving];
 }
 
 - (void)restoreCollectionViewLayoutConfigurations {
     UICollectionViewFlowLayout *layout = (id) _collectionView.collectionViewLayout;
-    layout.estimatedItemSize = CGSizeMake(300, 60);
+    layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
 }
 
 #pragma mark - Navigation
@@ -137,9 +137,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.collectionView.visibleCells enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [((CNSExchangeCollectionViewCell *) obj) closeCardOption:nil];
-    }];
+    [CNSExchangeCollectionViewCell closeCardOptionsInCellsExcept:nil];
 }
 
 #pragma mark - UICollectionViewDataSource
