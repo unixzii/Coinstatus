@@ -101,6 +101,14 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!_delegate) return;
+    if (![_delegate respondsToSelector:@selector(addCurrencyViewController:didSelectCoinWithSymbol:)]) return;
+    
+    CNSCoin *coin = [_coinList objectAtIndex:indexPath.row];
+    [_delegate addCurrencyViewController:self didSelectCoinWithSymbol:coin.symbol];
+}
+
 /*
 #pragma mark - Navigation
 

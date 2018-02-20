@@ -10,7 +10,7 @@
 
 #import "CNSCardOptionButton.h"
 
-static NSString * const CNSExchangeCollectionViewCellDidRequestClosingCardOptionNotification = @"CNSExchangeCollectionViewCellDidRequestClosingCardOptionNotification";
+static NSNotificationName const CNSExchangeCollectionViewCellDidRequestClosingCardOptionNotification = @"CNSExchangeCollectionViewCellDidRequestClosingCardOptionNotification";
 
 @interface CNSExchangeCollectionViewCell ()
 
@@ -129,14 +129,13 @@ static NSString * const CNSExchangeCollectionViewCellDidRequestClosingCardOption
     }
     
     if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
-        containerWidth = CGRectGetWidth(collectionView.readableContentGuide.layoutFrame);
+        containerWidth /= 2;
+        containerWidth -= 10;
     }
     
-    CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    size.width = containerWidth;
-    if (!CGSizeEqualToSize(layoutAttributes.frame.size, size)) {
-        CGRect frame = layoutAttributes.frame;
-        frame.size = size;
+    CGRect frame = layoutAttributes.frame;
+    if (CGRectGetWidth(frame) != containerWidth) {
+        frame.size.width = containerWidth;
         layoutAttributes.frame = frame;
     }
     

@@ -9,12 +9,15 @@
 #import "CNSMainViewController.h"
 
 #import "AppDelegate.h"
+#import "CNSAddCurrencyViewController.h"
 #import "CNSExchangeCollectionViewCell.h"
 #import "CNSExchange.h"
 #import "CNSExchangeManager.h"
 #import "CNSPriceRetriever.h"
 
-@interface CNSMainViewController () <UICollectionViewDelegate, UICollectionViewDataSource, CNSPriceRetrieverDelegate> {
+static NSString * const AddCurrencySegueIdentifier = @"AddCurrencySegue";
+
+@interface CNSMainViewController () <UICollectionViewDelegate, UICollectionViewDataSource, CNSPriceRetrieverDelegate, CNSAddCurrencyViewControllerDelegate> {
     CNSPriceRetriever *_priceRetriever;
     BOOL _interactiveMovementInFlight;
     BOOL _dataUpdatingDeferred;
@@ -128,10 +131,11 @@
     // No-op
 }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:AddCurrencySegueIdentifier]) {
+        UINavigationController *nc = segue.destinationViewController;
+        ((CNSAddCurrencyViewController *) nc.viewControllers.firstObject).delegate = self;
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -145,6 +149,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSInteger count = _exchangeList.count;
     _placeholderView.hidden = count != 0;
+    _collectionView.scrollEnabled = count != 0;
     
     return count;
 }
@@ -189,6 +194,18 @@
     }
     
     [_collectionView reloadData];
+}
+
+#pragma mark - CNSAddCurrencyViewControllerDelegate
+
+- (void)addCurrencyViewController:(CNSAddCurrencyViewController *)vc didSelectCoinWithSymbol:(NSString *)symbol {
+    CNSExchange *exchange = [CNSExchange exchangeFromSymbol:symbol toSymbol:@"USD"];
+    [_exchangeList addObject:exchange];
+    
+    [self saveExchangeList];
+    [self loadExchangeList];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

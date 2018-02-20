@@ -115,7 +115,7 @@
                     <navigationItem key="navigationItem" title="Coinstatus" largeTitleDisplayMode="always" id="Hhp-Bc-tBM">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Qzw-0j-HqR">
                             <connections>
-                                <segue destination="129-XI-xUR" kind="presentation" id="f5t-g9-rjL"/>
+                                <segue destination="129-XI-xUR" kind="presentation" identifier="AddCurrencySegue" id="f5t-g9-rjL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

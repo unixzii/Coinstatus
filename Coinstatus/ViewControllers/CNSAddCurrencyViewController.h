@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class CNSAddCurrencyViewController;
+
+@protocol CNSAddCurrencyViewControllerDelegate <NSObject>
+@optional
+- (void)addCurrencyViewController:(CNSAddCurrencyViewController *)vc didSelectCoinWithSymbol:(NSString *)symbol;
+@end
+
 @interface CNSAddCurrencyViewController : UITableViewController
+
+@property (weak, nonatomic) id<CNSAddCurrencyViewControllerDelegate> delegate;
 
 @end
