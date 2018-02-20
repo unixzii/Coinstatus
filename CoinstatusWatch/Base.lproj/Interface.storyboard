@@ -12,9 +12,9 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller alwaysBounce="YES" id="AgC-eL-Hgc" customClass="InterfaceController">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
-                        <group width="1" height="1" alignment="left" layout="overlap" id="JnJ-Kl-9zB">
+                        <group width="1" alignment="left" layout="overlap" id="JnJ-Kl-9zB">
                             <items>
                                 <table alignment="left" id="sG9-wA-QNG">
                                     <items>
@@ -38,7 +38,7 @@
                                         </tableRow>
                                     </items>
                                 </table>
-                                <label alignment="center" verticalAlignment="center" text="Please add some currency in iPhone" textAlignment="center" numberOfLines="0" id="S6E-eQ-RS6"/>
+                                <label height="1" alignment="center" verticalAlignment="center" text="Please add some currency in iPhone" textAlignment="center" numberOfLines="0" id="S6E-eQ-RS6"/>
                             </items>
                         </group>
                     </items>

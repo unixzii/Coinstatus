@@ -18,7 +18,7 @@ NSNotificationName const PriceRetrieverDidUpdateNotification = @"PriceRetrieverD
 
 @interface ExtensionDelegate () <WCSessionDelegate, CNSPriceRetrieverDelegate> {
     CNSPriceRetriever *_priceRetriever;
-    WKRefreshBackgroundTask *_currentBackgroundTask;
+    NSMutableSet<WKRefreshBackgroundTask *> *_activeBackgroundTasks;
 }
 @end
 
@@ -50,29 +50,28 @@ NSNotificationName const PriceRetrieverDidUpdateNotification = @"PriceRetrieverD
 }
 
 - (void)handleBackgroundTasks:(NSSet<WKRefreshBackgroundTask *> *)backgroundTasks {
-    // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
-    for (WKRefreshBackgroundTask * task in backgroundTasks) {
-        // Check the Class of each task to decide how to process it
+    for (WKRefreshBackgroundTask *task in backgroundTasks) {
         if ([task isKindOfClass:[WKApplicationRefreshBackgroundTask class]]) {
-            // Be sure to complete the background task once you’re done.
             WKApplicationRefreshBackgroundTask *backgroundTask = (WKApplicationRefreshBackgroundTask*)task;
             [self refreshDataWithBackgroundTask:backgroundTask];
-        } else if ([task isKindOfClass:[WKSnapshotRefreshBackgroundTask class]]) {
-            // Snapshot tasks have a unique completion call, make sure to set your expiration date
+            
+            return;
+        }
+        
+        if ([task isKindOfClass:[WKSnapshotRefreshBackgroundTask class]]) {
             WKSnapshotRefreshBackgroundTask *snapshotTask = (WKSnapshotRefreshBackgroundTask*)task;
             [snapshotTask setTaskCompletedWithDefaultStateRestored:YES estimatedSnapshotExpiration:[NSDate distantFuture] userInfo:nil];
-        } else if ([task isKindOfClass:[WKWatchConnectivityRefreshBackgroundTask class]]) {
-            // Be sure to complete the background task once you’re done.
-            WKWatchConnectivityRefreshBackgroundTask *backgroundTask = (WKWatchConnectivityRefreshBackgroundTask*)task;
-            [backgroundTask setTaskCompletedWithSnapshot:NO];
-        } else if ([task isKindOfClass:[WKURLSessionRefreshBackgroundTask class]]) {
-            // Be sure to complete the background task once you’re done.
-            WKURLSessionRefreshBackgroundTask *backgroundTask = (WKURLSessionRefreshBackgroundTask*)task;
-            [backgroundTask setTaskCompletedWithSnapshot:NO];
-        } else {
-            // make sure to complete unhandled task types
-            [task setTaskCompletedWithSnapshot:NO];
+            
+            return;
         }
+        
+        if ([task isKindOfClass:[WKWatchConnectivityRefreshBackgroundTask class]]) {
+            [_activeBackgroundTasks addObject:task];
+            
+            return;
+        }
+        
+        [task setTaskCompletedWithSnapshot:NO];
     }
 }
 
@@ -98,7 +97,15 @@ NSNotificationName const PriceRetrieverDidUpdateNotification = @"PriceRetrieverD
     NSString *action = [userInfo objectForKey:@"action"];
     if ([@"syncExchangeList" isEqualToString:action]) {
         [self syncExchangeList:[userInfo objectForKey:@"payload"]];
-    }    
+    }
+    
+    NSSet<WKRefreshBackgroundTask *> *aCopy = [_activeBackgroundTasks copy];
+    [aCopy enumerateObjectsUsingBlock:^(WKRefreshBackgroundTask * _Nonnull obj, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[WKWatchConnectivityRefreshBackgroundTask class]]) {
+            [obj setTaskCompletedWithSnapshot:YES];
+            [_activeBackgroundTasks removeObject:obj];
+        }
+    }];
 }
 
 #pragma mark -
@@ -114,7 +121,7 @@ NSNotificationName const PriceRetrieverDidUpdateNotification = @"PriceRetrieverD
 }
 
 - (void)refreshDataWithBackgroundTask:(WKApplicationRefreshBackgroundTask *)task {
-    _currentBackgroundTask = task;
+    [_activeBackgroundTasks addObject:task];
     
     [_priceRetriever startRetrieving];
     
@@ -124,15 +131,19 @@ NSNotificationName const PriceRetrieverDidUpdateNotification = @"PriceRetrieverD
 }
 
 - (void)completeCurrentBackgroundTaskIfNecessary {
-    if (_currentBackgroundTask) {
-        [_currentBackgroundTask setTaskCompletedWithSnapshot:YES];
-        [self scheduleBackgroundRefresh];
-        _currentBackgroundTask = nil;
-    }
-    
     if ([WKExtension sharedExtension].applicationState != WKApplicationStateActive) {
         [_priceRetriever stopRetrieving];
     }
+    
+    NSSet<WKRefreshBackgroundTask *> *aCopy = [_activeBackgroundTasks copy];
+    [aCopy enumerateObjectsUsingBlock:^(WKRefreshBackgroundTask * _Nonnull obj, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[WKApplicationRefreshBackgroundTask class]]) {
+            [obj setTaskCompletedWithSnapshot:YES];
+            [_activeBackgroundTasks removeObject:obj];
+        }
+    }];
+    
+    [self scheduleBackgroundRefresh];
 }
 
 #pragma mark - CNSPriceRetrieverDelegate
